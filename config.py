@@ -1,0 +1,1 @@
+db = 'sqlite:///tmp.db'

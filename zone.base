@@ -1,0 +1,13 @@
+; start of base
+ziptoloc.net.   86400   IN      SOA     ns.bind.es. hostmaster.ziptoloc.net. (
+                                        SERIAL      ;serial
+                                        10800           ;refresh
+                                        1800            ;retry
+                                        604800          ;expire
+                                        86400   )       ;minimum
+ziptoloc.net.           86400   IN      NS      ns.bind.es.
+ziptoloc.net            86400   IN      NS      ns2.bind.es.
+ziptoloc.net.           86400   IN      A       184.105.184.150
+; end of base
+
+
