@@ -14,3 +14,8 @@ Using the service
     
     [rolands@kamaji:~]$ dig +noall +answer loc 51630.ziptoloc.net
     51630.ziptoloc.net.	86400	IN	LOC	40 34 48.000 N 95 13 12.000 W 0.00m 0.00m 0.00m 0.00m
+
+Screenshot
+----------
+
+![screenshot of www.ziptoloc.net](screenshot.png)
