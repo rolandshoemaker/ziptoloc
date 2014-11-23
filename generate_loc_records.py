@@ -60,5 +60,5 @@ def generate_loc(domain, stub_output):
 	with open(stub_output, 'w+t') as f:
 		f.write("\n".join(output)+"\n")
 
-# populate(filename='free-zipcode-database-Primary.csv')
+populate(filename='free-zipcode-database-Primary.csv')
 generate_loc('ziptoloc.net', 'records.stub')

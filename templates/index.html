@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>ziptoloc</title>
+
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Bootstrap Core CSS -->
+        <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="static/css/logo-nav.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <a href="/"><i class="fa fa-map-marker" style="color: #5bc0de;"></i></a>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-centered">
+                <h1 style="text-align: center; cursor: default;">ziptoloc</h1>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{message}}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% if loc %}
+                    <div class="loc">
+                        <pre><code>{{loc}}</code></pre>
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="col-lg-16 col-centered">
+                        <form>
+                            <div class="form-group">
+                                <label>Domain name</label>
+                                <input class="form-control" name="domain_name" placeholder="example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Zip code</label>
+                                <input class="form-control" name="zip_code" placeholder="94607">
+                            </div>
+                            <button class="btn btn-lg btn-info btn-block" formmethod="post" target="index.html">Get LOC record</button>
+                        </form>
+
+                    <hr/>
+
+                    <h3 style="text-align: center;">about ziptoloc</h2>
+                    <p style="width: 85%; margin: 0 auto;"><em>ziptoloc</em> is a service written and provided for free by <a href="http://www.graphite-ink.com/" target="_blank">roland shoemaker</a>. It serves a relatively simple purpose, generating <a href="http://en.wikipedia.org/wiki/LOC_record" target="_blank">LOC</a> type DNS records based on a United States zip code. There are currently two different ways to access the service, via the <a href="http://www.ziptoloc.net" target="_blank">website</a> where you can set your own domain name and have complete records generated for you, or by querying ziptoloc.net directly using <a href="http://en.wikipedia.org/wiki/Dig_%28command%29" target="_blank">dig</a> (<em>or a similar dns query tool</em>) as such:</p><br/>
+                    <pre style="width: 85%; margin: 0 auto;"><code>[rolands@kamaji:~]$ dig +noall +answer loc 97402.ziptoloc.net
+<em>97402.ziptoloc.net. 86400   IN      LOC     44 2 24.000 N 123 13 12.000 W 0.00m 0.00m 0.00m 0.00m</em>
+
+[rolands@kamaji:~]$ dig +noall +answer loc 10200.ziptoloc.net
+<em>10200.ziptoloc.net. 86400   IN      LOC     40 46 12.000 N 73 57 0.000 E 0.00m 0.00m 0.00m 0.00m</em>
+
+[rolands@kamaji:~]$ dig +noall +answer loc 51630.ziptoloc.net
+<em>51630.ziptoloc.net. 86400   IN      LOC     40 34 48.000 N 95 13 12.000 W 0.00m 0.00m 0.00m 0.00m</em></code></pre><br/>
+                    <p style="width: 85%; margin: 0 auto;">If you'd like you can checkout the code that makes up the underlying infrastructure for ziptoloc.net you can find it on github <a href="https://github.com/rolandshoemaker/ziptoloc" target="_blank">here</a>.</p>
+                    <h3 style="text-align: center;">todo</h2>
+                    <ul style="width: 85%; margin: 0 auto;">
+                        <li>Add further granularity for zip code query (<em>altitude, size, hprecision, vprecision</em>)</li>
+                        <li>Allow address on web form (<em>seperate requests to external api</em>)</li>
+                        <li>Add JSON API access</li>
+                        <li>Add small google map thing with generated LOC record</li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+
+        <!-- jQuery -->
+        <script src="static/js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="static/js/bootstrap.min.js"></script>
+    </body>
+</html>
