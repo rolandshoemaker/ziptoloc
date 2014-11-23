@@ -1,3 +1,5 @@
 db.*
 records.stub
 *.db
+*.csv
+__pycache__/
